@@ -1,0 +1,127 @@
+# Network Impairment Study Configuration
+# Focused simulation studying various network conditions and their impact
+
+# Medium-scale simulation for detailed impairment analysis
+duration_sec: 1200   # 20 minutes
+interval_ms: 1000    # 1-second resolution
+num_users: 10000
+use_high_performance: true
+use_vectorized: true
+max_cores: 6
+
+# Standard traffic profiles for impairment comparison
+profiles:
+  - name: "eMBB"
+    traffic_share: 0.65
+    packet_size_bytes: [1400, 800, 400, 200]
+    packet_size_pct: [70, 15, 10, 5]
+    ul_dl_ratio: 0.15
+    flows_per_user: 4
+    qos_5qi: 9
+    protocol: "TCP"
+    burstiness_factor: 1.2
+
+  - name: "URLLC"
+    traffic_share: 0.25
+    packet_size_bytes: [200, 100, 64]
+    packet_size_pct: [60, 25, 15]
+    ul_dl_ratio: 1.0
+    flows_per_user: 2
+    qos_5qi: 1
+    protocol: "UDP"
+    burstiness_factor: 1.0
+
+  - name: "mMTC"
+    traffic_share: 0.10
+    packet_size_bytes: [128, 64, 32]
+    packet_size_pct: [50, 30, 20]
+    ul_dl_ratio: 0.8
+    flows_per_user: 1
+    qos_5qi: 8
+    protocol: "UDP"
+    burstiness_factor: 0.9
+
+# Constant traffic pattern for impairment focus
+time_of_day:
+  eMBB: [1.0]
+  URLLC: [1.0]
+  mMTC: [1.0]
+
+# Comprehensive impairment scenarios
+impairments:
+  eMBB:
+    loss_rate: 0.003        # Moderate loss for analysis
+    latency_ms: {mean: 25, std: 5.0}
+    jitter_ms: {std: 3.0}
+  URLLC:
+    loss_rate: 0.0002       # Ultra-low loss requirement
+    latency_ms: {mean: 1, std: 0.2}
+    jitter_ms: {std: 0.1}
+  mMTC:
+    loss_rate: 0.01         # Higher tolerance for IoT
+    latency_ms: {mean: 100, std: 25.0}
+    jitter_ms: {std: 15.0}
+
+# Progressive impairment events for study
+events:
+  eMBB:
+    - start_interval: 120     # 2 minutes: Light congestion
+      end_interval: 240
+      multiplier: 1.2
+      impairment_multiplier: 1.5
+    
+    - start_interval: 360     # 6 minutes: Moderate congestion
+      end_interval: 480
+      multiplier: 1.1
+      impairment_multiplier: 2.0
+    
+    - start_interval: 600     # 10 minutes: Heavy congestion
+      end_interval: 720
+      multiplier: 1.3
+      impairment_multiplier: 3.0
+    
+    - start_interval: 840     # 14 minutes: Network recovery
+      end_interval: 960
+      multiplier: 0.9
+      impairment_multiplier: 0.5
+
+  URLLC:
+    - start_interval: 300     # 5 minutes: Critical system stress
+      end_interval: 420
+      multiplier: 1.4
+      impairment_multiplier: 1.2
+    
+    - start_interval: 660     # 11 minutes: Emergency response
+      end_interval: 780
+      multiplier: 1.8
+      impairment_multiplier: 1.1
+
+  mMTC:
+    - start_interval: 180     # 3 minutes: IoT burst activity
+      end_interval: 300
+      multiplier: 2.0
+      impairment_multiplier: 1.3
+    
+    - start_interval: 900     # 15 minutes: Sensor maintenance window
+      end_interval: 1020
+      multiplier: 0.3
+      impairment_multiplier: 0.8
+
+# Detailed output for impairment analysis
+output:
+  generate_charts: true
+  create_analysis: true
+  verbose_logging: true
+  export_formats: ["csv", "json", "html"]
+  impairment_analysis: true
+
+# Specialized impairment analysis
+analysis:
+  detect_patterns: true
+  calculate_peaks: true
+  generate_insights: true
+  statistical_summary: true
+  impairment_correlation: true
+  qos_analysis: true
+  latency_distribution: true
+  loss_pattern_analysis: true

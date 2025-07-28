@@ -1,0 +1,118 @@
+# High Load Stress Test Configuration
+# Extreme load testing with 100k users and network stress conditions
+
+# Stress test parameters
+duration_sec: 1800   # 30 minutes of intense load
+interval_ms: 250     # High-resolution capture
+num_users: 100000    # Maximum load
+use_high_performance: true
+use_vectorized: true
+max_cores: 8
+
+# High-load traffic profiles
+profiles:
+  - name: "eMBB"
+    traffic_share: 0.68
+    packet_size_bytes: [1500, 1400, 800, 400, 200, 100]
+    packet_size_pct: [50, 25, 10, 8, 5, 2]
+    ul_dl_ratio: 0.25  # Higher upload during stress
+    flows_per_user: 6
+    qos_5qi: 9
+    protocol: "TCP"
+    burstiness_factor: 1.6
+
+  - name: "URLLC"
+    traffic_share: 0.18
+    packet_size_bytes: [256, 128, 64, 32]
+    packet_size_pct: [50, 30, 15, 5]
+    ul_dl_ratio: 1.5   # High bidirectional traffic
+    flows_per_user: 3
+    qos_5qi: 1
+    protocol: "UDP"
+    burstiness_factor: 1.2
+
+  - name: "mMTC"
+    traffic_share: 0.11
+    packet_size_bytes: [128, 64, 32, 16, 8]
+    packet_size_pct: [30, 25, 20, 15, 10]
+    ul_dl_ratio: 0.8
+    flows_per_user: 2
+    qos_5qi: 8
+    protocol: "UDP"
+    burstiness_factor: 1.0
+
+  - name: "VoNR"
+    traffic_share: 0.03
+    packet_size_bytes: [172, 80, 40]
+    packet_size_pct: [80, 15, 5]
+    ul_dl_ratio: 1.0
+    flows_per_user: 1
+    qos_5qi: 2
+    protocol: "RTP"
+    burstiness_factor: 0.8
+
+# Stress test time patterns (30-minute windows)
+time_of_day:
+  eMBB: [1.0, 1.2]      # Increasing load over 30 minutes
+  URLLC: [1.1, 1.3]     # Critical services under stress
+  mMTC: [1.0, 1.1]      # IoT sensors maintain connectivity
+  VoNR: [1.0, 1.4]      # Voice traffic increases under stress
+
+# High-stress network impairments
+impairments:
+  eMBB:
+    loss_rate: 0.005     # 0.5% loss under stress
+    latency_ms: {mean: 35, std: 8.0}
+    jitter_ms: {std: 5.0}
+  URLLC:
+    loss_rate: 0.0005    # Maintained low loss for critical services
+    latency_ms: {mean: 2.5, std: 0.5}
+    jitter_ms: {std: 0.25}
+  mMTC:
+    loss_rate: 0.008     # Higher tolerance for IoT
+    latency_ms: {mean: 80, std: 20.0}
+    jitter_ms: {std: 12.0}
+  VoNR:
+    loss_rate: 0.001     # Voice quality maintained
+    latency_ms: {mean: 8, std: 2.0}
+    jitter_ms: {std: 1.0}
+
+# Multiple stress events
+events:
+  eMBB:
+    - start_interval: 300     # 5 minutes in
+      end_interval: 600       # 10 minutes in
+      multiplier: 2.0         # Double traffic spike
+    - start_interval: 1200    # 20 minutes in
+      end_interval: 1500      # 25 minutes in
+      multiplier: 2.5         # Peak stress event
+  
+  URLLC:
+    - start_interval: 600     # 10 minutes in
+      end_interval: 900       # 15 minutes in
+      multiplier: 1.5         # Critical system load
+    - start_interval: 1350    # 22.5 minutes in
+      end_interval: 1650      # 27.5 minutes in
+      multiplier: 1.8         # Maximum critical load
+  
+  VoNR:
+    - start_interval: 450     # 7.5 minutes in
+      end_interval: 750       # 12.5 minutes in
+      multiplier: 3.0         # Emergency call surge
+
+# Performance monitoring output
+output:
+  generate_charts: true
+  create_analysis: true
+  verbose_logging: true
+  export_formats: ["csv", "json", "html", "parquet"]
+  performance_metrics: true
+
+# Stress test analysis
+analysis:
+  detect_patterns: true
+  calculate_peaks: true
+  generate_insights: true
+  statistical_summary: true
+  performance_analysis: true
+  bottleneck_detection: true

@@ -1,0 +1,20 @@
+{
+  "data_summary": {
+    "total_intervals": 60,
+    "duration_hours": 0.01638888888888889,
+    "avg_dl_throughput": 1517.8490880000002,
+    "avg_ul_throughput": 182.141888,
+    "peak_dl_throughput": 1517.849088,
+    "peak_ul_throughput": 182.141888
+  },
+  "chart_metadata": {
+    "chart_type": "interactive_time_series",
+    "profiles_included": [
+      "eMBB"
+    ],
+    "time_range": {
+      "start": "1970-01-01T00:00:00",
+      "end": "1970-01-01T00:00:59"
+    }
+  }
+}

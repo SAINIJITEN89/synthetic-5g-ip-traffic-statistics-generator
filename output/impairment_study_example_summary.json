@@ -1,0 +1,105 @@
+{
+  "simulation": {
+    "total_duration_sec": 1200.0,
+    "total_intervals": 1200,
+    "interval_ms": 1000
+  },
+  "traffic_totals": {
+    "total_packets_ul": 7295565728,
+    "total_packets_dl": 9193518939,
+    "total_bytes_ul": 851177098280,
+    "total_bytes_dl": 2550625472336,
+    "avg_throughput_ul_mbps": 5674.513988533334,
+    "avg_throughput_dl_mbps": 17004.169815573332,
+    "peak_throughput_ul_mbps": 8034.0804960000005,
+    "peak_throughput_dl_mbps": 23245.725304
+  },
+  "profile_eMBB": {
+    "total_packets_ul": 233951288,
+    "total_packets_dl": 1559681019,
+    "total_bytes_ul": 293843830520,
+    "total_bytes_dl": 1958958875816,
+    "avg_throughput_ul_mbps": 1958.9588701333334,
+    "avg_throughput_dl_mbps": 13059.725838773333,
+    "qos_5qi": 9
+  },
+  "profile_URLLC": {
+    "total_packets_ul": 4772726640,
+    "total_packets_dl": 4772726640,
+    "total_bytes_ul": 419999956920,
+    "total_bytes_dl": 419999956920,
+    "avg_throughput_ul_mbps": 2799.9997128,
+    "avg_throughput_dl_mbps": 2799.9997128,
+    "qos_5qi": 1
+  },
+  "profile_mMTC": {
+    "total_packets_ul": 2288887800,
+    "total_packets_dl": 2861111280,
+    "total_bytes_ul": 137333310840,
+    "total_bytes_dl": 171666639600,
+    "avg_throughput_ul_mbps": 915.5554056,
+    "avg_throughput_dl_mbps": 1144.4442640000002,
+    "qos_5qi": 8
+  },
+  "performance": {
+    "num_cores": 6,
+    "total_profiles": 3,
+    "has_overlays": true,
+    "overlay_summary": {
+      "time_of_day_stats": {
+        "eMBB": {
+          "min_multiplier": 1.0,
+          "max_multiplier": 1.0,
+          "avg_multiplier": 1.0,
+          "peak_hours_boost": 1.0
+        },
+        "URLLC": {
+          "min_multiplier": 1.0,
+          "max_multiplier": 1.0,
+          "avg_multiplier": 1.0,
+          "peak_hours_boost": 1.0
+        },
+        "mMTC": {
+          "min_multiplier": 1.0,
+          "max_multiplier": 1.0,
+          "avg_multiplier": 1.0,
+          "peak_hours_boost": 1.0
+        }
+      },
+      "event_stats": {
+        "eMBB": {
+          "has_events": true,
+          "max_event_multiplier": 1.3,
+          "event_intervals": 360
+        },
+        "URLLC": {
+          "has_events": true,
+          "max_event_multiplier": 1.8,
+          "event_intervals": 240
+        },
+        "mMTC": {
+          "has_events": true,
+          "max_event_multiplier": 2.0,
+          "event_intervals": 120
+        }
+      },
+      "impairment_stats": {
+        "eMBB": {
+          "avg_loss_pct": 0.3011514664755328,
+          "avg_latency_ms": 24.690074448778486,
+          "avg_jitter_ms": 2.4968395482942727
+        },
+        "URLLC": {
+          "avg_loss_pct": 0.020049303271489474,
+          "avg_latency_ms": 0.9926742741281919,
+          "avg_jitter_ms": 0.07795145853362588
+        },
+        "mMTC": {
+          "avg_loss_pct": 1.0016764599029913,
+          "avg_latency_ms": 99.37719208823196,
+          "avg_jitter_ms": 11.753418180608511
+        }
+      }
+    }
+  }
+}

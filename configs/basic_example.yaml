@@ -1,0 +1,69 @@
+# Basic Example Configuration
+# Simple 5-minute simulation with 1000 users demonstrating core functionality
+
+# Simulation parameters
+duration_sec: 300
+interval_ms: 1000
+num_users: 1000
+use_high_performance: true
+use_vectorized: true
+max_cores: 4
+
+# Basic traffic profiles
+profiles:
+  - name: "eMBB"
+    traffic_share: 0.70
+    packet_size_bytes: [1400, 800, 200]
+    packet_size_pct: [75, 15, 10]
+    ul_dl_ratio: 0.12
+    flows_per_user: 3
+    qos_5qi: 9
+    protocol: "TCP"
+    burstiness_factor: 1.2
+
+  - name: "URLLC"
+    traffic_share: 0.20
+    packet_size_bytes: [200, 100, 50]
+    packet_size_pct: [50, 30, 20]
+    ul_dl_ratio: 1.0
+    flows_per_user: 2
+    qos_5qi: 1
+    protocol: "UDP"
+    burstiness_factor: 1.1
+
+  - name: "mMTC"
+    traffic_share: 0.10
+    packet_size_bytes: [100, 50]
+    packet_size_pct: [70, 30]
+    ul_dl_ratio: 0.8
+    flows_per_user: 1
+    qos_5qi: 8
+    protocol: "UDP"
+    burstiness_factor: 0.8
+
+# Simple time-of-day pattern (5 AM to 10 AM simulation)
+time_of_day:
+  eMBB: [0.3, 0.4, 0.5, 0.7, 1.0]
+  URLLC: [0.8, 0.9, 1.0, 1.1, 1.2]
+  mMTC: [1.0, 1.0, 1.0, 1.0, 1.0]
+
+# Basic network impairments
+impairments:
+  eMBB:
+    loss_rate: 0.001
+    latency_ms: {mean: 15, std: 2.0}
+    jitter_ms: {std: 1.5}
+  URLLC:
+    loss_rate: 0.0001
+    latency_ms: {mean: 1, std: 0.2}
+    jitter_ms: {std: 0.1}
+  mMTC:
+    loss_rate: 0.002
+    latency_ms: {mean: 50, std: 10.0}
+    jitter_ms: {std: 5.0}
+
+# Output settings
+output:
+  generate_charts: true
+  create_analysis: true
+  verbose_logging: true

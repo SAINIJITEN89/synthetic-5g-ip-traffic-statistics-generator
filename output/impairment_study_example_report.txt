@@ -1,0 +1,42 @@
+5G Traffic Statistics Generator - Simulation Report
+==================================================
+
+Simulation Parameters:
+  Duration: 1200.0 seconds
+  Intervals: 1200
+  Interval Size: 1000 ms
+
+Traffic Totals:
+  Uplink Packets: 7,295,565,728
+  Downlink Packets: 9,193,518,939
+  Uplink Bytes: 851,177,098,280
+  Downlink Bytes: 2,550,625,472,336
+  Avg UL Throughput: 5674.51 Mbps
+  Avg DL Throughput: 17004.17 Mbps
+  Peak UL Throughput: 8034.08 Mbps
+  Peak DL Throughput: 23245.73 Mbps
+
+Profile Breakdown:
+  URLLC:
+    QoS 5QI: 1
+    UL Packets: 4,772,726,640
+    DL Packets: 4,772,726,640
+    Avg UL Throughput: 2800.00 Mbps
+    Avg DL Throughput: 2800.00 Mbps
+    Avg Active Users: 0.0
+
+  eMBB:
+    QoS 5QI: 9
+    UL Packets: 233,951,288
+    DL Packets: 1,559,681,019
+    Avg UL Throughput: 1958.96 Mbps
+    Avg DL Throughput: 13059.73 Mbps
+    Avg Active Users: 0.0
+
+  mMTC:
+    QoS 5QI: 8
+    UL Packets: 2,288,887,800
+    DL Packets: 2,861,111,280
+    Avg UL Throughput: 915.56 Mbps
+    Avg DL Throughput: 1144.44 Mbps
+    Avg Active Users: 0.0

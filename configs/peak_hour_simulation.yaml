@@ -1,0 +1,100 @@
+# Peak Hour Traffic Simulation
+# 2-hour simulation covering morning rush hour with traffic spikes
+
+# High-performance simulation parameters
+duration_sec: 7200  # 2 hours
+interval_ms: 500    # High resolution
+num_users: 25000
+use_high_performance: true
+use_vectorized: true
+max_cores: 8
+
+# Comprehensive traffic profiles for peak hour
+profiles:
+  - name: "eMBB"
+    traffic_share: 0.65
+    packet_size_bytes: [1400, 800, 400, 200]
+    packet_size_pct: [70, 15, 10, 5]
+    ul_dl_ratio: 0.15
+    flows_per_user: 4
+    qos_5qi: 9
+    protocol: "TCP"
+    burstiness_factor: 1.4
+
+  - name: "URLLC"
+    traffic_share: 0.20
+    packet_size_bytes: [200, 100, 64]
+    packet_size_pct: [60, 25, 15]
+    ul_dl_ratio: 1.2
+    flows_per_user: 2
+    qos_5qi: 1
+    protocol: "UDP"
+    burstiness_factor: 1.1
+
+  - name: "mMTC"
+    traffic_share: 0.10
+    packet_size_bytes: [128, 64, 32]
+    packet_size_pct: [50, 30, 20]
+    ul_dl_ratio: 0.9
+    flows_per_user: 1
+    qos_5qi: 8
+    protocol: "UDP"
+    burstiness_factor: 0.9
+
+  - name: "VoNR"
+    traffic_share: 0.05
+    packet_size_bytes: [172, 80]
+    packet_size_pct: [80, 20]
+    ul_dl_ratio: 1.0
+    flows_per_user: 1
+    qos_5qi: 2
+    protocol: "RTP"
+    burstiness_factor: 0.7
+
+# Peak hour time-of-day variations (7 AM to 9 AM)
+time_of_day:
+  eMBB: [0.6, 0.8, 1.0, 1.2]  # Gradual increase during rush hour
+  URLLC: [0.9, 1.0, 1.1, 1.2]  # Consistent high activity
+  mMTC: [1.0, 1.0, 1.0, 1.0]   # Constant IoT traffic
+  VoNR: [0.7, 1.0, 1.3, 1.1]   # Peak during commute time
+
+# Realistic network impairments during peak load
+impairments:
+  eMBB:
+    loss_rate: 0.002    # Higher loss during peak
+    latency_ms: {mean: 20, std: 4.0}
+    jitter_ms: {std: 2.5}
+  URLLC:
+    loss_rate: 0.0002
+    latency_ms: {mean: 1.5, std: 0.3}
+    jitter_ms: {std: 0.15}
+  mMTC:
+    loss_rate: 0.003
+    latency_ms: {mean: 60, std: 15.0}
+    jitter_ms: {std: 8.0}
+  VoNR:
+    loss_rate: 0.0005
+    latency_ms: {mean: 5, std: 1.0}
+    jitter_ms: {std: 0.5}
+
+# Traffic events during peak hour
+events:
+  eMBB:
+    - start_interval: 1800    # 30 minutes in (7:30 AM)
+      end_interval: 2400      # 40 minutes in (7:40 AM)
+      multiplier: 1.5         # Morning news spike
+    - start_interval: 5400    # 90 minutes in (8:30 AM)
+      end_interval: 6000      # 100 minutes in (8:40 AM)
+      multiplier: 1.3         # Social media surge
+  
+  URLLC:
+    - start_interval: 3600    # 60 minutes in (8:00 AM)
+      end_interval: 4200      # 70 minutes in (8:10 AM)
+      multiplier: 1.2         # Industrial automation peak
+
+# Output settings
+output:
+  generate_charts: true
+  create_analysis: true
+  verbose_logging: true
+  export_formats: ["csv", "json", "html"]

@@ -1,0 +1,71 @@
+{
+  "simulation_metadata": {
+    "total_intervals": 60,
+    "time_span_hours": 0.01638888888888889,
+    "interval_duration_minutes": 0.016666666666666666,
+    "data_start_time": "1970-01-01T00:00:00",
+    "data_end_time": "1970-01-01T00:00:59"
+  },
+  "throughput_analysis": {
+    "downlink": {
+      "average_mbps": 1517.8490880000002,
+      "peak_mbps": 1517.849088,
+      "minimum_mbps": 1517.849088,
+      "std_deviation": 2.292924746550901e-13,
+      "percentile_95": 1517.849088
+    },
+    "uplink": {
+      "average_mbps": 182.141888,
+      "peak_mbps": 182.141888,
+      "minimum_mbps": 182.141888,
+      "std_deviation": 0.0,
+      "percentile_95": 182.141888
+    },
+    "ul_dl_ratio": 0.1199999983134028
+  },
+  "profile_analysis": {
+    "eMBB": {
+      "avg_dl_mbps": 1517.8490880000002,
+      "avg_ul_mbps": 182.141888,
+      "peak_dl_mbps": 1517.849088,
+      "peak_ul_mbps": 182.141888,
+      "traffic_share_dl": 1.0,
+      "traffic_share_ul": 1.0,
+      "ul_dl_ratio": 0.1199999983134028
+    }
+  },
+  "pattern_indicators": {
+    "has_daily_pattern": "False",
+    "has_weekly_pattern": false,
+    "peak_hours": [],
+    "traffic_variability": 1.5106407907601554e-16
+  },
+  "generated_charts": {
+    "matplotlib": [
+      "output/charts/cli_charts_example_throughput_timeseries.png",
+      "output/charts/cli_charts_example_profile_breakdown.png"
+    ],
+    "plotly": [
+      "output/charts/cli_charts_example_interactive.html"
+    ]
+  },
+  "claude_analysis_hints": {
+    "focus_areas": [
+      "throughput_trends",
+      "peak_identification",
+      "profile_distribution",
+      "pattern_analysis"
+    ],
+    "improvement_opportunities": [
+      "load_balancing",
+      "capacity_planning",
+      "qos_optimization"
+    ],
+    "chart_interpretation_notes": [
+      "DL throughput typically 3-10x higher than UL in consumer networks",
+      "Time-of-day patterns should show business hours peaks",
+      "Profile breakdown reveals service type distribution",
+      "Sudden spikes may indicate events or system issues"
+    ]
+  }
+}

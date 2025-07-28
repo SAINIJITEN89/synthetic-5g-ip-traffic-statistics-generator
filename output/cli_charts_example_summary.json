@@ -1,0 +1,31 @@
+{
+  "simulation": {
+    "total_duration_sec": 60.0,
+    "total_intervals": 60,
+    "interval_ms": 1000
+  },
+  "traffic_totals": {
+    "total_packets_ul": 1087620,
+    "total_packets_dl": 9063600,
+    "total_bytes_ul": 1366064160,
+    "total_bytes_dl": 11383868160,
+    "avg_throughput_ul_mbps": 182.141888,
+    "avg_throughput_dl_mbps": 1517.8490880000002,
+    "peak_throughput_ul_mbps": 182.141888,
+    "peak_throughput_dl_mbps": 1517.849088
+  },
+  "profile_eMBB": {
+    "total_packets_ul": 1087620,
+    "total_packets_dl": 9063600,
+    "total_bytes_ul": 1366064160,
+    "total_bytes_dl": 11383868160,
+    "avg_throughput_ul_mbps": 182.141888,
+    "avg_throughput_dl_mbps": 1517.8490880000002,
+    "qos_5qi": 9
+  },
+  "performance": {
+    "num_cores": 8,
+    "total_profiles": 1,
+    "has_overlays": false
+  }
+}

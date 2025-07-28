@@ -1,0 +1,120 @@
+# Daily Traffic Pattern Analysis
+# 24-hour simulation with comprehensive time-of-day variations
+
+# Full day simulation parameters
+duration_sec: 86400  # 24 hours
+interval_ms: 3600000 # 1-hour intervals for daily analysis
+num_users: 15000
+use_high_performance: true
+use_vectorized: true
+max_cores: 8
+
+# Realistic daily traffic mix
+profiles:
+  - name: "eMBB"
+    traffic_share: 0.70
+    packet_size_bytes: [1400, 800, 400, 200, 100]
+    packet_size_pct: [65, 20, 8, 5, 2]
+    ul_dl_ratio: 0.18
+    flows_per_user: 5
+    qos_5qi: 9
+    protocol: "TCP"
+    burstiness_factor: 1.3
+
+  - name: "URLLC"
+    traffic_share: 0.15
+    packet_size_bytes: [200, 128, 64]
+    packet_size_pct: [60, 25, 15]
+    ul_dl_ratio: 1.1
+    flows_per_user: 2
+    qos_5qi: 1
+    protocol: "UDP"
+    burstiness_factor: 1.0
+
+  - name: "mMTC"
+    traffic_share: 0.12
+    packet_size_bytes: [128, 64, 32, 16]
+    packet_size_pct: [40, 30, 20, 10]
+    ul_dl_ratio: 0.7
+    flows_per_user: 1
+    qos_5qi: 8
+    protocol: "UDP"
+    burstiness_factor: 0.8
+
+  - name: "VoNR"
+    traffic_share: 0.03
+    packet_size_bytes: [172, 80, 40]
+    packet_size_pct: [75, 20, 5]
+    ul_dl_ratio: 1.0
+    flows_per_user: 1
+    qos_5qi: 2
+    protocol: "RTP"
+    burstiness_factor: 0.6
+
+# Complete 24-hour traffic patterns (hourly multipliers)
+time_of_day:
+  eMBB: [0.2, 0.15, 0.1, 0.1, 0.15, 0.3, 0.6, 0.9, 1.0, 1.1, 1.0, 1.0,
+         1.1, 1.0, 0.9, 0.95, 1.0, 1.2, 1.4, 1.3, 1.0, 0.8, 0.5, 0.3]
+  
+  URLLC: [0.8, 0.7, 0.6, 0.6, 0.7, 0.9, 1.1, 1.2, 1.3, 1.3, 1.2, 1.1,
+          1.2, 1.3, 1.2, 1.1, 1.2, 1.3, 1.2, 1.1, 1.0, 0.9, 0.9, 0.8]
+  
+  mMTC: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+         1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  
+  VoNR: [0.1, 0.05, 0.05, 0.05, 0.1, 0.3, 0.8, 1.2, 1.0, 0.8, 0.7, 0.6,
+         0.7, 0.8, 0.7, 0.8, 1.0, 1.3, 1.2, 0.9, 0.6, 0.4, 0.2, 0.15]
+
+# Time-varying network impairments
+impairments:
+  eMBB:
+    loss_rate: 0.0015
+    latency_ms: {mean: 18, std: 3.5}
+    jitter_ms: {std: 2.0}
+  URLLC:
+    loss_rate: 0.0001
+    latency_ms: {mean: 1.2, std: 0.25}
+    jitter_ms: {std: 0.12}
+  mMTC:
+    loss_rate: 0.0025
+    latency_ms: {mean: 55, std: 12.0}
+    jitter_ms: {std: 6.0}
+  VoNR:
+    loss_rate: 0.0003
+    latency_ms: {mean: 4, std: 0.8}
+    jitter_ms: {std: 0.4}
+
+# Daily traffic events
+events:
+  eMBB:
+    - start_interval: 7        # 7 AM
+      end_interval: 9          # 9 AM
+      multiplier: 1.3          # Morning rush
+    - start_interval: 12       # 12 PM
+      end_interval: 13         # 1 PM
+      multiplier: 1.2          # Lunch break
+    - start_interval: 17       # 5 PM
+      end_interval: 20         # 8 PM
+      multiplier: 1.4          # Evening peak
+  
+  VoNR:
+    - start_interval: 8        # 8 AM
+      end_interval: 9          # 9 AM
+      multiplier: 1.5          # Morning commute calls
+    - start_interval: 17       # 5 PM
+      end_interval: 18         # 6 PM
+      multiplier: 1.6          # Evening commute calls
+
+# Advanced output settings
+output:
+  generate_charts: true
+  create_analysis: true
+  verbose_logging: true
+  export_formats: ["csv", "json", "html", "parquet"]
+  
+# Analysis configuration
+analysis:
+  detect_patterns: true
+  calculate_peaks: true
+  generate_insights: true
+  statistical_summary: true

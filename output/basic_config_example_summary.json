@@ -1,0 +1,105 @@
+{
+  "simulation": {
+    "total_duration_sec": 300.0,
+    "total_intervals": 300,
+    "interval_ms": 1000
+  },
+  "traffic_totals": {
+    "total_packets_ul": 128729109,
+    "total_packets_dl": 153486051,
+    "total_bytes_ul": 11503529858,
+    "total_bytes_dl": 25986193289,
+    "avg_throughput_ul_mbps": 306.76079621333326,
+    "avg_throughput_dl_mbps": 692.9651543733333,
+    "peak_throughput_ul_mbps": 318.888024,
+    "peak_throughput_dl_mbps": 737.109144
+  },
+  "profile_eMBB": {
+    "total_packets_ul": 1481712,
+    "total_packets_dl": 12349119,
+    "total_bytes_ul": 1861272254,
+    "total_bytes_dl": 15510603485,
+    "avg_throughput_ul_mbps": 49.633926773333336,
+    "avg_throughput_dl_mbps": 413.61609293333333,
+    "qos_5qi": 9
+  },
+  "profile_URLLC": {
+    "total_packets_ul": 71692197,
+    "total_packets_dl": 71692332,
+    "total_bytes_ul": 6308929704,
+    "total_bytes_dl": 6308929704,
+    "avg_throughput_ul_mbps": 168.23812544,
+    "avg_throughput_dl_mbps": 168.23812544,
+    "qos_5qi": 1
+  },
+  "profile_mMTC": {
+    "total_packets_ul": 55555200,
+    "total_packets_dl": 69444600,
+    "total_bytes_ul": 3333327900,
+    "total_bytes_dl": 4166660100,
+    "avg_throughput_ul_mbps": 88.88874399999999,
+    "avg_throughput_dl_mbps": 111.110936,
+    "qos_5qi": 8
+  },
+  "performance": {
+    "num_cores": 4,
+    "total_profiles": 3,
+    "has_overlays": true,
+    "overlay_summary": {
+      "time_of_day_stats": {
+        "eMBB": {
+          "min_multiplier": 0.3,
+          "max_multiplier": 0.3,
+          "avg_multiplier": 0.3,
+          "peak_hours_boost": 1.0
+        },
+        "URLLC": {
+          "min_multiplier": 0.8,
+          "max_multiplier": 0.8,
+          "avg_multiplier": 0.7999999999999999,
+          "peak_hours_boost": 1.0000000000000002
+        },
+        "mMTC": {
+          "min_multiplier": 1.0,
+          "max_multiplier": 1.0,
+          "avg_multiplier": 1.0,
+          "peak_hours_boost": 1.0
+        }
+      },
+      "event_stats": {
+        "eMBB": {
+          "has_events": false,
+          "max_event_multiplier": 1.0,
+          "event_intervals": 0
+        },
+        "URLLC": {
+          "has_events": false,
+          "max_event_multiplier": 1.0,
+          "event_intervals": 0
+        },
+        "mMTC": {
+          "has_events": false,
+          "max_event_multiplier": 1.0,
+          "event_intervals": 0
+        }
+      },
+      "impairment_stats": {
+        "eMBB": {
+          "avg_loss_pct": 0.09994451440918761,
+          "avg_latency_ms": 15.174436152932707,
+          "avg_jitter_ms": 1.1467666319630363
+        },
+        "URLLC": {
+          "avg_loss_pct": 0.009978510017308023,
+          "avg_latency_ms": 1.0169147409538573,
+          "avg_jitter_ms": 0.07852568704507455
+        },
+        "mMTC": {
+          "avg_loss_pct": 0.2016438823910401,
+          "avg_latency_ms": 50.356232574552934,
+          "avg_jitter_ms": 3.9259083534538846
+        }
+      }
+    }
+  }
+}

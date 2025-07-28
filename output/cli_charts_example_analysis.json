@@ -1,0 +1,245 @@
+{
+  "analysis_metadata": {
+    "generated_timestamp": "2025-07-28T18:57:10.045216",
+    "analyzer_version": "1.0.0",
+    "analysis_type": "comprehensive_throughput_analysis",
+    "claude_interpretation_guide": {
+      "key_metrics": [
+        "basic_statistics",
+        "peak_analysis",
+        "performance_insights"
+      ],
+      "visualization_suggestions": [
+        "time_series_plots",
+        "correlation_heatmaps",
+        "peak_distribution_charts"
+      ],
+      "improvement_focus_areas": [
+        "capacity_optimization",
+        "load_balancing",
+        "qos_management"
+      ]
+    }
+  },
+  "analysis_results": {
+    "basic_statistics": {
+      "dl": {
+        "mean": 1517.8490880000002,
+        "median": 1517.849088,
+        "std": 2.292924746550901e-13,
+        "min": 1517.849088,
+        "max": 1517.849088,
+        "range": 0.0,
+        "coefficient_of_variation": 1.5106407907601554e-16,
+        "percentiles": {
+          "5th": 1517.849088,
+          "25th": 1517.849088,
+          "75th": 1517.849088,
+          "95th": 1517.849088,
+          "99th": 1517.849088
+        },
+        "skewness": NaN,
+        "kurtosis": NaN
+      },
+      "ul": {
+        "mean": 182.141888,
+        "median": 182.141888,
+        "std": 0.0,
+        "min": 182.141888,
+        "max": 182.141888,
+        "range": 0.0,
+        "coefficient_of_variation": 0.0,
+        "percentiles": {
+          "5th": 182.141888,
+          "25th": 182.141888,
+          "75th": 182.141888,
+          "95th": 182.141888,
+          "99th": 182.141888
+        },
+        "skewness": NaN,
+        "kurtosis": NaN
+      },
+      "combined": {
+        "total_average_throughput": 1699.990976,
+        "ul_dl_ratio": 0.1199999983134028,
+        "asymmetry_factor": 1.5106407907601554e-16,
+        "peak_to_average_ratio_dl": 0.9999999999999999,
+        "peak_to_average_ratio_ul": 1.0
+      }
+    },
+    "time_patterns": {
+      "hourly": {
+        "dl_peak_hour": 0,
+        "dl_lowest_hour": 0,
+        "dl_peak_value": 1517.849088,
+        "dl_lowest_value": 1517.849088,
+        "dl_hourly_variation": NaN,
+        "ul_peak_hour": 0,
+        "ul_lowest_hour": 0,
+        "ul_peak_value": 182.141888,
+        "ul_lowest_value": 182.141888,
+        "ul_hourly_variation": NaN,
+        "pattern_strength": NaN
+      },
+      "cyclical": {
+        "dl": {
+          "has_strong_cycles": "True",
+          "strongest_cycle_lag": 10,
+          "cycle_strength": 1.0,
+          "detected_cycles": [
+            4
+          ]
+        },
+        "ul": {
+          "has_strong_cycles": false,
+          "strongest_cycle_lag": 1,
+          "cycle_strength": NaN,
+          "detected_cycles": []
+        }
+      }
+    },
+    "peak_analysis": {
+      "dl": {
+        "peak_threshold": 1517.8490880000006,
+        "num_peaks": 0,
+        "peak_percentage": 0.0,
+        "message": "No significant peaks detected"
+      },
+      "ul": {
+        "peak_threshold": 182.141888,
+        "num_peaks": 0,
+        "peak_percentage": 0.0,
+        "message": "No significant peaks detected"
+      }
+    },
+    "trend_analysis": {
+      "dl": {
+        "linear_trend": {
+          "slope": 0.0,
+          "r_squared": 0.0,
+          "p_value": 1.0,
+          "significance": "not_significant",
+          "direction": "stable"
+        },
+        "mann_kendall": {
+          "trend": "no_trend",
+          "p_value": 1.0,
+          "significance": "not_significant"
+        },
+        "change_rate_per_hour": 0.0
+      },
+      "ul": {
+        "linear_trend": {
+          "slope": 0.0,
+          "r_squared": NaN,
+          "p_value": NaN,
+          "significance": "not_significant",
+          "direction": "stable"
+        },
+        "mann_kendall": {
+          "trend": "no_trend",
+          "p_value": 1.0,
+          "significance": "not_significant"
+        },
+        "change_rate_per_hour": 0.0
+      }
+    },
+    "anomaly_detection": {
+      "dl": {
+        "num_anomalies": 0,
+        "anomaly_percentage": 0.0,
+        "message": "No significant anomalies detected"
+      },
+      "ul": {
+        "num_anomalies": 0,
+        "anomaly_percentage": 0.0,
+        "message": "No significant anomalies detected"
+      }
+    },
+    "profile_analysis": {
+      "eMBB": {
+        "contribution_analysis": {
+          "avg_dl_share": 1.0,
+          "avg_ul_share": 1.0,
+          "variability_dl": 1.5106407907601554e-16,
+          "variability_ul": 0.0
+        },
+        "correlation_with_total": {
+          "dl_correlation": NaN,
+          "ul_correlation": NaN
+        },
+        "peak_analysis": {
+          "dl_peaks": 0,
+          "ul_peaks": 0
+        }
+      }
+    },
+    "correlation_analysis": {
+      "ul_dl_correlation": {
+        "coefficient": NaN,
+        "p_value": NaN,
+        "strength": "very_weak",
+        "significance": "not_significant"
+      },
+      "strong_correlations": [
+        {
+          "variables": [
+            "timestamp",
+            "interval_idx"
+          ],
+          "correlation": 1.0,
+          "strength": "very_strong"
+        }
+      ]
+    },
+    "performance_insights": {
+      "capacity_analysis": {
+        "dl_utilization_efficiency": 1.0,
+        "ul_utilization_efficiency": 1.0,
+        "asymmetry_level": 0.1199999983134028,
+        "load_consistency": {
+          "dl_consistency": 0.9999999999999999,
+          "ul_consistency": 1.0
+        }
+      },
+      "bottleneck_analysis": {
+        "potential_dl_congestion_periods": 0,
+        "potential_ul_congestion_periods": 0,
+        "underutilization_periods": {
+          "dl_low_usage": 0,
+          "ul_low_usage": 0
+        }
+      },
+      "qos_implications": {
+        "eMBB": {
+          "variability_risk": "low",
+          "peak_congestion_risk": "low",
+          "stability_score": 0.9999999999999999
+        }
+      }
+    },
+    "claude_recommendations": {
+      "optimization_opportunities": [],
+      "capacity_planning": [],
+      "operational_insights": [],
+      "data_quality_assessment": [],
+      "further_analysis_suggestions": [
+        {
+          "analysis_type": "geographic_analysis",
+          "description": "Analyze throughput patterns by geographic regions or cell sectors",
+          "benefit": "Identify location-specific optimization opportunities"
+        },
+        {
+          "analysis_type": "user_behavior_correlation",
+          "description": "Correlate throughput patterns with user demographics and usage patterns",
+          "benefit": "Better understanding of demand drivers"
+        },
+        {
+          "analysis_type": "seasonal_analysis",
+          "description": "Extend analysis to cover seasonal variations over multiple years",
+          "benefit": "Long-term capacity planning and trend prediction"
+        }
+      ]
+    }
+  }
+}
