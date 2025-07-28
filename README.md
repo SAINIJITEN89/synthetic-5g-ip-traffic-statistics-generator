@@ -29,7 +29,7 @@ Generates comprehensive time-series statistics for 5G backhaul traffic including
 
 ```bash
 # Clone the repository
-git clone https://github.com/youruser/synthetic-5g-ip-traffic-statistics-generator.git
+git clone https://github.com/SAINIJITEN89/synthetic-5g-ip-traffic-statistics-generator.git
 cd synthetic-5g-ip-traffic-statistics-generator
 
 # Setup virtual environment
