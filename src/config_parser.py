@@ -38,6 +38,19 @@ class ConfigParser:
         parser.add_argument('--output', type=str, help='Output file path')
         parser.add_argument('--format', choices=['csv', 'json'], help='Output format')
         parser.add_argument('--seed', type=int, help='Random seed for reproducibility')
+        
+        # Chart and analysis options
+        parser.add_argument('--generate-charts', action='store_true', 
+                          help='Generate throughput time series charts')
+        parser.add_argument('--analyze-patterns', action='store_true',
+                          help='Perform statistical analysis and pattern recognition')
+        parser.add_argument('--chart-format', choices=['png', 'svg', 'html'], 
+                          action='append', help='Chart output formats (can be used multiple times)')
+        parser.add_argument('--no-charts', action='store_true',
+                          help='Disable chart generation even if enabled in config')
+        parser.add_argument('--no-analysis', action='store_true', 
+                          help='Disable pattern analysis even if enabled in config')
+        
         return parser.parse_args()
     
     def load_config_file(self, config_path: str) -> Dict[str, Any]:
@@ -85,6 +98,20 @@ class ConfigParser:
             cli_overrides['output_format'] = args.format
         if args.seed is not None:
             cli_overrides['random_seed'] = args.seed
+        
+        # Chart and analysis CLI overrides
+        if args.generate_charts:
+            cli_overrides['generate_charts'] = True
+        if args.analyze_patterns:
+            cli_overrides['analyze_patterns'] = True
+        if args.no_charts:
+            cli_overrides['generate_charts'] = False
+        if args.no_analysis:
+            cli_overrides['analyze_patterns'] = False
+        if args.chart_format:
+            if 'charts' not in cli_overrides:
+                cli_overrides['charts'] = {}
+            cli_overrides['charts']['formats'] = args.chart_format
         
         config = self.merge_configs(config, cli_overrides)
         

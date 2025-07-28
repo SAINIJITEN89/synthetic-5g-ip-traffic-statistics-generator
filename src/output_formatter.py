@@ -4,6 +4,9 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 import logging
 
+from .chart_generator import ChartGenerator
+from .throughput_analyzer import ThroughputAnalyzer
+
 
 class OutputFormatter:
     def __init__(self, config: Dict[str, Any]):
@@ -11,6 +14,16 @@ class OutputFormatter:
         self.output_file = config.get('output_file', 'stats.csv')
         self.output_format = config.get('output_format', 'csv')
         self.logger = logging.getLogger(__name__)
+        
+        # Initialize chart generator and analyzer if enabled
+        self.generate_charts = config.get('generate_charts', False)
+        self.analyze_patterns = config.get('analyze_patterns', False)
+        
+        if self.generate_charts:
+            self.chart_generator = ChartGenerator(config)
+        
+        if self.analyze_patterns:
+            self.throughput_analyzer = ThroughputAnalyzer(config)
     
     def write_dataframe_csv(self, df: pd.DataFrame) -> str:
         output_path = Path(self.output_file)
@@ -57,6 +70,7 @@ class OutputFormatter:
     def export_results(self, df: pd.DataFrame, summary: Optional[Dict[str, Any]] = None) -> List[str]:
         output_files = []
         
+        # Export main data files
         if self.output_format.lower() == 'csv':
             csv_file = self.write_dataframe_csv(df)
             output_files.append(csv_file)
@@ -71,6 +85,43 @@ class OutputFormatter:
         if summary:
             summary_file = self.write_summary_json(summary)
             output_files.append(summary_file)
+        
+        # Generate charts if enabled
+        if self.generate_charts:
+            try:
+                base_filename = Path(self.output_file).stem
+                chart_files = self.chart_generator.generate_time_series_charts(df, base_filename)
+                
+                # Add chart files to output list
+                for chart_type, files in chart_files.items():
+                    output_files.extend(files)
+                
+                # Generate comprehensive dashboard
+                dashboard_file = self.chart_generator.create_summary_dashboard(df, base_filename)
+                output_files.append(dashboard_file)
+                
+                self.logger.info(f"Generated {len(chart_files.get('matplotlib', []))} matplotlib charts and {len(chart_files.get('plotly', []))} interactive charts")
+                
+            except Exception as e:
+                self.logger.error(f"Chart generation failed: {e}")
+        
+        # Perform throughput analysis if enabled
+        if self.analyze_patterns:
+            try:
+                base_filename = Path(self.output_file).stem
+                analysis_results = self.throughput_analyzer.analyze_throughput_patterns(df)
+                
+                # Export analysis results
+                analysis_file = self.throughput_analyzer.export_analysis(
+                    analysis_results, 
+                    Path(self.output_file).parent / f"{base_filename}_analysis.json"
+                )
+                output_files.append(analysis_file)
+                
+                self.logger.info("Throughput pattern analysis completed")
+                
+            except Exception as e:
+                self.logger.error(f"Throughput analysis failed: {e}")
         
         return output_files
     

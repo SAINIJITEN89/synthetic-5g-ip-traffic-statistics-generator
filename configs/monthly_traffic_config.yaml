@@ -18,6 +18,23 @@ output_file: "output/monthly_5g_traffic.csv"
 output_format: "csv"
 generate_report: true
 
+# Chart and analysis configuration
+generate_charts: true
+analyze_patterns: true
+charts:
+  formats: ["png", "html"]
+  dpi: 300
+  figsize: [14, 10]
+  # Performance optimization settings
+  max_points: 5000              # Downsample large datasets to 5k points for charts
+  sampling_strategy: "smart"    # 'uniform', 'smart', 'time_based'
+  preserve_peaks: true          # Keep important peaks/valleys when sampling  
+  time_aggregation: "auto"      # 'auto', 'hour', '15min', '5min', 'none'
+analysis:
+  peak_threshold: 1.5
+  pattern_sensitivity: 0.2
+  anomaly_threshold: 2.0
+
 # Realistic 5G traffic profiles with proper distribution
 profiles:
   - name: "eMBB"

@@ -2,25 +2,25 @@
 ==================================================
 
 Simulation Parameters:
-  Duration: 60.0 seconds
-  Intervals: 60
+  Duration: 600.0 seconds
+  Intervals: 600
   Interval Size: 1000 ms
 
 Traffic Totals:
-  Uplink Packets: 5,438,160
-  Downlink Packets: 45,318,180
-  Uplink Bytes: 6,830,353,140
-  Downlink Bytes: 56,919,609,900
-  Avg UL Throughput: 910.71 Mbps
-  Avg DL Throughput: 7589.28 Mbps
-  Peak UL Throughput: 910.71 Mbps
-  Peak DL Throughput: 7589.28 Mbps
+  Uplink Packets: 10,876,200
+  Downlink Packets: 90,636,000
+  Uplink Bytes: 13,660,641,600
+  Downlink Bytes: 113,838,681,600
+  Avg UL Throughput: 182.14 Mbps
+  Avg DL Throughput: 1517.85 Mbps
+  Peak UL Throughput: 182.14 Mbps
+  Peak DL Throughput: 1517.85 Mbps
 
 Profile Breakdown:
   eMBB:
     QoS 5QI: 9
-    UL Packets: 5,438,160
-    DL Packets: 45,318,180
-    Avg UL Throughput: 910.71 Mbps
-    Avg DL Throughput: 7589.28 Mbps
+    UL Packets: 10,876,200
+    DL Packets: 90,636,000
+    Avg UL Throughput: 182.14 Mbps
+    Avg DL Throughput: 1517.85 Mbps
     Avg Active Users: 0.0

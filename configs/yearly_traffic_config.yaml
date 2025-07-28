@@ -18,6 +18,23 @@ output_file: "output/yearly_5g_traffic_2024.csv"
 output_format: "csv"
 generate_report: true
 
+# Chart and analysis configuration
+generate_charts: true
+analyze_patterns: true
+charts:
+  formats: ["png", "html", "svg"]
+  dpi: 300
+  figsize: [16, 12]
+  # Performance optimization settings for large yearly dataset
+  max_points: 8000              # Downsample to 8k points for yearly charts
+  sampling_strategy: "time_based" # Use time-based aggregation for year-long data
+  preserve_peaks: true          # Keep important peaks/valleys
+  time_aggregation: "auto"      # Auto-determine hourly/daily aggregation
+analysis:
+  peak_threshold: 1.8
+  pattern_sensitivity: 0.15
+  anomaly_threshold: 2.5
+
 # Optimized 5G traffic profiles for yearly simulation
 profiles:
   - name: "eMBB"

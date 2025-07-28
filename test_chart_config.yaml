@@ -1,0 +1,77 @@
+# Test configuration for chart generation  
+duration_sec: 7200  # 2 hours
+interval_ms: 15000  # 15-second intervals to create more data points
+num_users: 1000
+bandwidth_per_user_mbps: 10.0
+random_seed: 123
+
+# Enable chart generation and analysis
+generate_charts: true
+analyze_patterns: true
+charts:
+  formats: ["png", "html"]
+  dpi: 150  # Lower DPI for faster testing
+  figsize: [12, 8]
+  # Performance settings for testing
+  max_points: 100               # Very small limit to force sampling
+  sampling_strategy: "smart"    # Test smart sampling
+  preserve_peaks: true          # Test peak preservation
+  time_aggregation: "none"      # No aggregation for test data
+analysis:
+  peak_threshold: 1.5
+  pattern_sensitivity: 0.2
+  anomaly_threshold: 2.0
+
+# High performance settings
+use_high_performance: true
+use_vectorized: true
+max_cores: 8
+
+# Output configuration
+output_file: "output/test_charts.csv"
+output_format: "csv"
+generate_report: true
+
+# Simple traffic profiles for testing
+profiles:
+  - name: "eMBB"
+    traffic_share: 0.80
+    packet_size_bytes: [1400, 200]
+    packet_size_pct: [85, 15]
+    ul_dl_ratio: 0.15
+    flows_per_user: 3
+    qos_5qi: 9
+    burstiness_factor: 1.3
+    
+  - name: "URLLC"
+    traffic_share: 0.20
+    packet_size_bytes: [88]
+    packet_size_pct: [100]
+    ul_dl_ratio: 1.0
+    flows_per_user: 1
+    qos_5qi: 1
+    burstiness_factor: 1.1
+
+# Simple time-of-day pattern for testing
+time_of_day:
+  eMBB: [0.3, 0.3, 0.2, 0.2, 0.3, 0.5, 0.8, 1.0, 1.2, 1.1, 1.0, 1.0, 
+         1.1, 1.0, 0.9, 0.9, 1.0, 1.3, 1.4, 1.2, 1.0, 0.8, 0.6, 0.4]
+  URLLC: [0.8, 0.7, 0.6, 0.6, 0.7, 0.9, 1.1, 1.2, 1.3, 1.2, 1.1, 1.0,
+          1.1, 1.2, 1.1, 1.0, 1.1, 1.2, 1.1, 1.0, 0.9, 0.8, 0.8, 0.8]
+
+# Test impairments
+impairments:
+  eMBB:
+    loss_rate: 0.002
+    latency_ms:
+      mean: 15
+      std: 2.0
+    jitter_ms:
+      std: 1.5
+  URLLC:
+    loss_rate: 0.0001
+    latency_ms:
+      mean: 2
+      std: 0.3
+    jitter_ms:
+      std: 0.1
