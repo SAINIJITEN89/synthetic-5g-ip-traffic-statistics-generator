@@ -110,7 +110,7 @@ output:
   generate_charts: true
   create_analysis: true
   verbose_logging: true
-  export_formats: ["csv", "json", "html", "parquet"]
+  export_formats: ["csv"]
   
 # Analysis configuration
 analysis:
